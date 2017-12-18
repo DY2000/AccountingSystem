@@ -1,60 +1,52 @@
 package guiPlayer;
 
 import java.io.BufferedReader;
+
 import java.io.File;
+
 import java.io.FileReader;
+
 import java.io.FileWriter;
+
 import java.io.IOException;
+
 import java.util.ArrayList;
+
 import java.util.List;
+
 import java.util.Scanner;
 
 
-public class CatalogMaker {
 
-	private ArrayList<Megaman> list;
-	public static Scanner in = new Scanner(System.in);
+public class SAR {
 
-	public CatalogMaker() {
-		list = new ArrayList<Megaman>();
-		list.add(new Megaman("buster","name","type"));
 
-	}
-	public String getCSVcontent() {
-		String data = "buster,name,type\n";
-		for(Megaman n: list) {
-			data += n + "\n";
-		}
-		return data;
-	}
 
-	public static void main(String[] args) {
-		CatalogMaker cata = new CatalogMaker();
-		System.out.println(cata.getCSVcontent());
+	public static void main(String[] args){
+
+		List<String> content = testFileLoading();
+
+		displayContent(content);
+
+		testSaveContent("test.csv");
+
+
+
+
+
 
 
 	}
-	public void addNewItem() {
-		System.out.println("Please input a buster, name, type.");
-		String hi = in.nextLine();
-		String[] reee = hi.split(",");
-		while(reee.length!=3) {
-			System.out.println("Please input a buster, name, type.");
-			hi = in.nextLine();
-			reee = hi.split(",");
-		}
-		System.out.println("You have successfully added this item!");
 
-	}
 
-	private void testSaveContent(String fileName) {
+
+	private static void testSaveContent(String fileName) {
 
 		try{    
 
 			FileWriter fw=new FileWriter(fileName);    
-			for(Megaman a: list) {
-				fw.write(a.toString()+"\n");
-			}    
+
+			fw.write("This file was created programmatically.");    
 
 			fw.close();    
 
@@ -69,6 +61,23 @@ public class CatalogMaker {
 
 
 	}
+
+
+
+	private static void displayContent(List<String> content) {
+
+		//print the content:
+
+		for(String item : content){
+
+			System.out.println(item);
+
+		}
+
+	}
+
+
+
 	private static List<String> testFileLoading() {
 
 		Scanner in = new Scanner(System.in);
@@ -98,7 +107,9 @@ public class CatalogMaker {
 				BufferedReader br = new BufferedReader(fileReader);
 
 				while ((line = br.readLine()) != null) {
-					String [] z = line.split(",");
+
+
+
 					content.add(line);
 
 
@@ -135,4 +146,17 @@ public class CatalogMaker {
 
 
 
+		//close the Scanner
+
+		in.close();
+
+		return content;
+
 	}
+
+
+
+
+
+}
+

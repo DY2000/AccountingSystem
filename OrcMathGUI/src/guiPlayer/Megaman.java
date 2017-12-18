@@ -38,12 +38,13 @@ public class Megaman extends AnimatedComponent {
 		
 	}
 	/**
-	 * M,Magnet Beam, Creation
+	 * M, Magnet Beam, Creation
 	 * C, Rolling Cutter, Physical
 	 * G, Super Arm, Physical
 	 * I, Ice Slasher, Ice
 	 * B, Hyper Bomb, Explosive
 	 * F, Fire Storm, Fire
 	 * E, Thunder Beam, Thunder
+	 * 
 	 */
 }
