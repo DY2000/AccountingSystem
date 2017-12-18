@@ -1,6 +1,7 @@
 package guiPlayer;
 
 import java.awt.Font;
+
 import java.awt.FontFormatException;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -118,8 +119,8 @@ public class Sampler extends GUIApplication {
 					
 				}
 			}); 
-			viewObjects.add(cb);
-			viewObjects.add(new Megaman());
+			//viewObjects.add(cb);
+			viewObjects.add(new Megaman("P", "Mega Buster", "Normal"));
 			
 		}
 		

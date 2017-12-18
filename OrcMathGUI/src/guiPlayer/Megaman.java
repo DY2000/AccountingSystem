@@ -21,7 +21,7 @@ public class Megaman extends AnimatedComponent {
 		this.type = type;
 		//Thread animation = new Thread(this);
 		//animation.start();
-		//update();
+		update();
 	}
 	public String toString() {
 		return buster + "," + name + "," + type;
@@ -37,5 +37,13 @@ public class Megaman extends AnimatedComponent {
 		
 		
 	}
-
+	/**
+	 * M,Magnet Beam, Creation
+	 * C, Rolling Cutter, Physical
+	 * G, Super Arm, Physical
+	 * I, Ice Slasher, Ice
+	 * B, Hyper Bomb, Explosive
+	 * F, Fire Storm, Fire
+	 * E, Thunder Beam, Thunder
+	 */
 }
