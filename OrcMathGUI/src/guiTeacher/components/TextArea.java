@@ -29,6 +29,7 @@ public class TextArea extends TextLabel {
 
 	}
 
+
 	public void update(Graphics2D g){
 		clear();
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);

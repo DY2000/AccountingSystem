@@ -1,6 +1,5 @@
-package new1;
+package New;
 
-import java.awt.event.ActionEvent;
 import java.util.List;
 
 import guiTeacher.components.TextField;
@@ -20,11 +19,7 @@ public class catalogScreen extends FullFunctionScreen {
 	public void initAllObjects(List<Visible> viewObjects) {
 		hi = new TextField(40,40,200,30,"txt goes here","description");
 		viewObjects.add(hi);
-		
-		public void act() {
-			hi.setText("Send in any Text.");
-		}
+
 	}
 
 }
-

@@ -2,6 +2,7 @@ package guiPlayer;
 
 import java.awt.Color;
 import java.awt.Font;
+
 import java.awt.FontFormatException;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
@@ -125,7 +126,8 @@ public class Sampler extends GUIApplication implements FileRequester{
 					
 				}
 			}); 
-			viewObjects.add(cb);
+			//viewObjects.add(cb);
+			viewObjects.add(new Megaman("P", "Mega Buster", "Normal"));
 			
 			
 				
