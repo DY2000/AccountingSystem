@@ -6,7 +6,7 @@ public class SimonGameDevin extends GUIApplication {
 
 	public SimonGameDevin(int width, int height) {
 		super(width, height);
-		// TODO Auto-generated constructor stub
+		setVisible(true);
 	}
 
 	@Override

@@ -4,4 +4,10 @@ import guiTeacher.interfaces.Visible;
 
 public interface ProgressInterfaceDevin extends Visible {
 
+	void gameOver();
+
+
+	
+
+
 }

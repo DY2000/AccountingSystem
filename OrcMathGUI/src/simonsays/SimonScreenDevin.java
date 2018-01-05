@@ -1,10 +1,13 @@
 package simonsays;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+import guiTeacher.components.Action;
 import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.Visible;
+import guiTeacher.userInterfaces.ClickableScreen;
 
 
 public class SimonScreenDevin extends ClickableScreen implements Runnable {
@@ -15,7 +18,7 @@ public class SimonScreenDevin extends ClickableScreen implements Runnable {
 		yes.start();
 	}
 	private TextLabel txt;
-	private ButtonInterfaceDevin[] dav;
+	private ButtonInterfaceDevin[] buttons;
 	private ProgressInterfaceDevin prog;
 	private ArrayList<MoveInterfaceDevin> direct;
 	private int roundNumber;
@@ -24,16 +27,11 @@ public class SimonScreenDevin extends ClickableScreen implements Runnable {
 	private int lastSelectedButton;
 	
 
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		addButtons();
-		for(ButtonInterfaceDevin b: dav){ 
+		for(ButtonInterfaceDevin b: buttons){ 
 		    viewObjects.add(b); 
 		}
 		prog = getProgress();
@@ -50,8 +48,17 @@ public class SimonScreenDevin extends ClickableScreen implements Runnable {
 	}
 
 	private MoveInterfaceDevin randomMove() {
-
+		int bIndex = (int)(Math.random()*buttons.length);
+		while(bIndex == lastSelectedButton) {
+			bIndex = (int)(Math.random()*buttons.length);
+		}
+		return getMove(bIndex);
 	}
+	private MoveInterfaceDevin getMove(int bIndex) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	/**
 	Placeholder until partner finishes implementation of ProgressInterface
 	*/
@@ -61,8 +68,69 @@ public class SimonScreenDevin extends ClickableScreen implements Runnable {
 	}
 
 	private void addButtons() {
-		// TODO Auto-generated method stub
+		int numberOfButtons = 6;
+		buttons = new ButtonInterfaceDevin[numberOfButtons];
 		
+		Color[] color = new Color[5];
+		color[0] = Color.red;
+		color[1] = Color.black;
+		color[2] = Color.blue;
+		color[3] = Color.green;
+		color[4] = Color.lightGray;
+		color[5] = Color.orange;
+		
+		for (int i = 0; i < numberOfButtons; i++) {
+			final ButtonInterfaceDevin b = getAButton();
+			buttons[i] = b;
+			
+			b.setColor(color[i]);
+			b.setX(i*50 + 100);
+			b.setY(200);
+			
+			b.setAction(new Action() {
+				
+				public void act() {
+					if (acceptingInput) {
+						Thread blink = new Thread (new Runnable() {
+							
+							public void run() {
+								b.highlight();
+								try {
+									Thread.sleep(800);
+									} catch (InterruptedException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+									}
+									b.dim();
+							}
+						});
+						blink.start();
+						
+						if (b == direct.get(sequenceIndex).getButton()){
+							sequenceIndex++;
+						} else {
+							prog.gameOver();
+						}
+						
+						if(sequenceIndex == direct.size()){
+							Thread nextRound = new Thread(SimonScreenDevin.this); 
+							nextRound.start();
+						}
+					}
+				}
+			});
+		}
+	}
+
+	private ButtonInterfaceDevin getAButton() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void run() {
+		txt.setText("");
+		nextRound();
+
 	}
 
 }
