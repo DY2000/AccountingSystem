@@ -8,6 +8,7 @@ import guiTeacher.components.Action;
 import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
+import myStuff.ButtonInterfaceJohnson;
 
 
 public class SimonScreenDevin extends ClickableScreen implements Runnable {
@@ -134,8 +135,53 @@ public class SimonScreenDevin extends ClickableScreen implements Runnable {
 	}
 
 	private void nextRound() {
-		// TODO Auto-generated method stub
-		
+		acceptingInput = false;
+		roundNumber++;
+		direct.add(randomMove());
+		prog.setRound(roundNumber);
+		prog.setSequenceSize(direct.size());
+		changeText("Simon's turn");
+		playSequence();
+		changeText("Your turn");
+		acceptingInput = true;
+		sequenceIndex = 0;
 	}
 
+	private void playSequence() {
+		ButtonInterfaceDevin b = null;
+		for(int i = 0; i < direct.size(); i++) {
+			if(b != null) {
+				b.dim();
+			}
+			b = direct.get(i).getButton();
+			b.highlight();
+			int sleepTime = (int) Math.log(Math.pow(2, roundNumber)) + 3;
+			try {
+				Thread.sleep(sleepTime);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		b.dim();
+	}
+
+
+
+	private void changeText(String string) {
+		Thread blink = new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				txt.setText(string);
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				txt.setText("");
+			}
+		});
+	}
 }
