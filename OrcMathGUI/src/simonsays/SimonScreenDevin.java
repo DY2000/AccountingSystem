@@ -133,4 +133,9 @@ public class SimonScreenDevin extends ClickableScreen implements Runnable {
 
 	}
 
+	private void nextRound() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
