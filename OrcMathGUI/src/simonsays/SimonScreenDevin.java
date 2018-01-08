@@ -1,6 +1,7 @@
 package simonsays;
 
 import java.awt.Color;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +9,7 @@ import guiTeacher.components.Action;
 import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
-import myStuff.ButtonInterfaceJohnson;
+
 
 
 public class SimonScreenDevin extends ClickableScreen implements Runnable {
