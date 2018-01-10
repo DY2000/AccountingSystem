@@ -2,6 +2,7 @@ package simonsays;
 
 import java.awt.Color;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,8 @@ import guiTeacher.userInterfaces.ClickableScreen;
 
 
 
+
+
 public class SimonScreenDevin extends ClickableScreen implements Runnable {
 
 	public SimonScreenDevin(int width, int height) {
@@ -19,6 +22,7 @@ public class SimonScreenDevin extends ClickableScreen implements Runnable {
 		Thread yes = new Thread(this);
 		yes.start();
 	}
+	
 	private TextLabel txt;
 	private ButtonInterfaceDevin[] buttons;
 	private ProgressInterfaceDevin prog;
@@ -50,83 +54,77 @@ public class SimonScreenDevin extends ClickableScreen implements Runnable {
 	}
 
 	private MoveInterfaceDevin randomMove() {
+		ButtonInterfaceDevin a = null;
 		int bIndex = (int)(Math.random()*buttons.length);
 		while(bIndex == lastSelectedButton) {
 			bIndex = (int)(Math.random()*buttons.length);
 		}
-		return getMove(bIndex);
+		a = buttons[bIndex];
+	    lastSelectedButton = bIndex;
+		return getMove(a);
 	}
-	private MoveInterfaceDevin getMove(int bIndex) {
-		// TODO Auto-generated method stub
-		return null;
+	private MoveInterfaceDevin getMove(ButtonInterfaceDevin a) {
+		return new MoveDevin(a);
 	}
 
-	/**
-	Placeholder until partner finishes implementation of ProgressInterface
-	*/
 	private ProgressInterfaceDevin getProgress() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ProgDevin(50, 350, 100, 100);
 	}
 
 	private void addButtons() {
-		int numberOfButtons = 6;
+		int numberOfButtons = 5;
 		buttons = new ButtonInterfaceDevin[numberOfButtons];
-		
-		Color[] color = new Color[5];
-		color[0] = Color.red;
-		color[1] = Color.black;
-		color[2] = Color.blue;
-		color[3] = Color.green;
-		color[4] = Color.lightGray;
-		color[5] = Color.orange;
-		
-		for (int i = 0; i < numberOfButtons; i++) {
-			final ButtonInterfaceDevin b = getAButton();
-			buttons[i] = b;
-			
-			b.setColor(color[i]);
-			b.setX(i*50 + 100);
-			b.setY(200);
-			
+		Color[] color = {Color.orange, Color.magenta, Color.yellow, Color.green, Color.blue};
+		for(int i = 0; i < numberOfButtons; i++) {
+			buttons[i] = getAButton();
+			buttons[i].setColor(color[i]);
+			buttons[i].setX(250 + i *25 + i * 50);
+			buttons[i].setY(100);
+			final ButtonInterfaceDevin b = buttons[i];
+			b.dim();
 			b.setAction(new Action() {
 				
+				@Override
 				public void act() {
-					if (acceptingInput) {
-						Thread blink = new Thread (new Runnable() {
+					if(acceptingInput) {
+						Thread changeButton = new Thread(new Runnable() {
 							
+							@Override
 							public void run() {
 								b.highlight();
 								try {
-									Thread.sleep(800);
-									} catch (InterruptedException e) {
-									// TODO Auto-generated catch block
+									Thread.sleep(400);
+								}catch(InterruptedException e){
 									e.printStackTrace();
-									}
-									b.dim();
+								}
+								b.dim();
 							}
 						});
-						blink.start();
-						
-						if (b == direct.get(sequenceIndex).getButton()){
+						changeButton.start();
+						if(b == direct.get(sequenceIndex).getButton()) {
 							sequenceIndex++;
-						} else {
-							prog.gameOver();
+						}else {
+							prog.setText("Game Over");
 						}
-						
-						if(sequenceIndex == direct.size()){
+						if(sequenceIndex == direct.size()) {
 							Thread nextRound = new Thread(SimonScreenDevin.this); 
+						    try {
+								Thread.sleep(1000); //pause so user move doesn't collide with generation of moves
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 							nextRound.start();
 						}
-					}
+					}	
 				}
 			});
 		}
+		
 	}
-
 	private ButtonInterfaceDevin getAButton() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return new ButtonDevin(0, 0, 75, 75, "", null);
 	}
 	@Override
 	public void run() {
@@ -134,41 +132,6 @@ public class SimonScreenDevin extends ClickableScreen implements Runnable {
 		nextRound();
 
 	}
-
-	private void nextRound() {
-		acceptingInput = false;
-		roundNumber++;
-		direct.add(randomMove());
-		prog.setRound(roundNumber);
-		prog.setSequenceSize(direct.size());
-		changeText("Simon's turn");
-		playSequence();
-		changeText("Your turn");
-		acceptingInput = true;
-		sequenceIndex = 0;
-	}
-
-	private void playSequence() {
-		ButtonInterfaceDevin b = null;
-		for(int i = 0; i < direct.size(); i++) {
-			if(b != null) {
-				b.dim();
-			}
-			b = direct.get(i).getButton();
-			b.highlight();
-			int sleepTime = (int) Math.log(Math.pow(2, roundNumber)) + 3;
-			try {
-				Thread.sleep(sleepTime);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		b.dim();
-	}
-
-
-
 	private void changeText(String string) {
 		Thread blink = new Thread(new Runnable() {
 			
@@ -185,4 +148,45 @@ public class SimonScreenDevin extends ClickableScreen implements Runnable {
 			}
 		});
 	}
-}
+
+
+	private void nextRound() {
+		acceptingInput = false;
+		roundNumber++;
+		direct.add(randomMove());
+		
+		prog.setRound(roundNumber);
+		prog.setSequenceSize(direct.size());
+		
+		
+		changeText("Simon's turn");
+		txt.setText("");
+		playSequence();
+		changeText("Your turn");
+		acceptingInput = true;
+		sequenceIndex = 0;
+	}
+
+	private void playSequence() {
+		ButtonInterfaceDevin b = null;
+		for(int i = 0; i < direct.size(); i++) {
+			if(b != null) {
+				b.dim();
+			}
+			b = direct.get(i).getButton();
+			b.highlight();
+			int sleepTime = (1000 - (1 + i * 10 ));
+			try {
+				Thread.sleep(sleepTime);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		b.dim();
+	}
+	}
+
+
+
+

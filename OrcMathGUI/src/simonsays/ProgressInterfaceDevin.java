@@ -10,6 +10,11 @@ public interface ProgressInterfaceDevin extends Visible {
 
 	void setSequenceSize(int size);
 
+	void setText(String string);
+
+
+	
+
 
 	
 
