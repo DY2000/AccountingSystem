@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.util.List;
 
-import guiPlayer.CustomPane;
+
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.TextArea;
@@ -52,7 +52,7 @@ public class TaskAStart extends FullFunctionScreen{
 
 		}
 		/**
-		* not needed
+		* not needed?
 		**/
 		public void addButton(Graphics2D g, boolean hover){
 			g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,

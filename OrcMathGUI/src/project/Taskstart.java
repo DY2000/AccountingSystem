@@ -18,9 +18,9 @@ public class Taskstart extends GUIApplication {
 	}
 	
 	public static void main(String [] args) {
-		Taskstart dev = new Taskstart(800, 550);
-		Thread on = new Thread(dev);
-		on.start();
+		Taskstart a = new Taskstart(800, 550);
+		Thread b = new Thread(a);
+		b.start();
 	}
  
 
