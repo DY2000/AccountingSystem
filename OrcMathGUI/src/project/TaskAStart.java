@@ -38,7 +38,7 @@ public class TaskAStart extends FullFunctionScreen{
 			});
 			viewObjects.add(win);
 			viewObjects.add(text);
-			lose = new Button(40,300,100,100,"lose",new Action() {
+			lose = new Button(40,300,200,30,"lose",new Action() {
 				@Override
 				public void act() {
 					if(!a){
