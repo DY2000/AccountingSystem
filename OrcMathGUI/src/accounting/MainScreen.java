@@ -1,6 +1,7 @@
 package accounting;
 
 import java.awt.Color;
+
 import java.io.File;
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 		Button check = new Button(250, 95, 200, 100, "Open", new Action() {
 			
 			boolean visible = true;
+			boolean on = true;
 			int a = 1;
 			
 			public void act() {
@@ -39,13 +41,18 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 						int i = a;
 						a = i;
 						TextBox box = new TextBox(20 + 100 * i, 160, 200, 100, "Try typing here.");
+						
 						//box.setVisible(visible);
 						viewObjects.add(box);
+						
 						visible = false;
+
+						box.isEditable();
 				}
 				if(!visible) {
 					a++;
 					visible = true;
+					
 				}
 				
 				
