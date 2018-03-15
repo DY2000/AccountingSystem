@@ -31,29 +31,29 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 		Button check = new Button(250, 95, 200, 100, "Open", new Action() {
 			
 			boolean visible = true;
-			boolean on = true;
 			int a = 1;
 			
 			public void act() {
 				
 				
-				if(visible) {
+				//if(visible) {
 						int i = a;
 						a = i;
-						TextBox box = new TextBox(20 + 100 * i, 160, 200, 100, "Try typing here.");
+						TextBox box = new TextBox(20 + 100 * i, 160, 200, 100, "why u no work.");
 						
 						//box.setVisible(visible);
 						viewObjects.add(box);
 						
-						visible = false;
-
-						box.isEditable();
-				}
-				if(!visible) {
-					a++;
-					visible = true;
+						//visible = false;
+						a++;
+						
 					
-				}
+				//}
+				//if(!visible) {
+				//	a++;
+				//	visible = true;
+					
+				//}
 				
 				
 			}
