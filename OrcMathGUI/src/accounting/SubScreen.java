@@ -2,6 +2,7 @@ package accounting;
 
 import java.util.List;
 
+
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.interfaces.Visible;
@@ -9,6 +10,8 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 
 
 public class SubScreen extends FullFunctionScreen{
+	
+	private Button open;
 	
 	public SubScreen(int width, int height) {
 		super(width, height);
@@ -18,11 +21,11 @@ public class SubScreen extends FullFunctionScreen{
 	
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		Button open = new Button(20,265, 200, 30,"Open",new Action() {
+		 open = new Button(20,265, 200, 30,"Open",new Action() {
 			
 			@Override
 			public void act() {
-				StartScreen.a.setScreen(StartScreen.bc);
+				StartScreen.a.setScreen(StartScreen.screen1);
 			}
 			
 		});
