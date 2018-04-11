@@ -2,7 +2,10 @@ package accounting;
 
 import java.awt.Color;
 
+
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,10 +78,22 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 		Button save = new Button(500,95,200,100, "save", new Action() {
 			
 			public void act() {
-				
+				try {
+				FileWriter Filewriter = new FileWriter("hello.csv");
+				for(int i = 0; i < boxes.size(); i++) {
+					Filewriter.write(i+"/n");
+				}
+				Filewriter.close();
+				System.out.println("Success! File \"hello.csv\" saved!");
 			}
-			
+			catch(IOException e)
+			{
+				System.out.println("An IOException was thrown. \nCheck to see that the directory where you tried to save the file actually exists.");
+			}
+		}
 		});
+		
+		viewObjects.add(save);
 		viewObjects.add(check);
 		viewObjects.add(delete);
 		FileOpenButton fileButton = new FileOpenButton(100, 70, 120, 30, null, MainScreen.this);
