@@ -75,7 +75,7 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 				
 			}
 		}); 
-		Button save = new Button(500,95,200,100, "save", new Action() {
+		Button save = new Button(650,95,200,100, "save", new Action() {
 			
 			public void act() {
 				try {
@@ -92,12 +92,15 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 			}
 		}
 		});
-		
+		public boolean read() {
+			
+		}
 		viewObjects.add(save);
 		viewObjects.add(check);
 		viewObjects.add(delete);
 		FileOpenButton fileButton = new FileOpenButton(100, 70, 120, 30, null, MainScreen.this);
 		viewObjects.add(fileButton);
+		
 		
 
 		//TextBox box1 = new TextBox(20, 210, 200, 100, "wow");
@@ -115,5 +118,6 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+	// SAVE FILE INTO A CSV FILE, THAT IS LATER CONVERTED INTO THE JAVA PROGRAM
+	// USE REFERENCE FROM CATALOG MAKER, MAKE ADDITION FOR THE NUMBERS	
 }
