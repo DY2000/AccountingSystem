@@ -33,5 +33,6 @@ public class SubScreen extends FullFunctionScreen{
 		viewObjects.add(open);
 		Graphic on = new Graphic(20,300,"resources/menu.jpg");
 		viewObjects.add(on);
+		//d
 	}
 }
