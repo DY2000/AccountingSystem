@@ -26,7 +26,7 @@ public class StartScreen extends GUIApplication {
 		 a = new StartScreen(800,550);
 		Thread b = new Thread(a);
 		b.start();
-		
+		//
 	}
 
 }
