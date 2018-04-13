@@ -5,6 +5,7 @@ import java.util.List;
 
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
+import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
@@ -30,6 +31,7 @@ public class SubScreen extends FullFunctionScreen{
 			
 		});
 		viewObjects.add(open);
-		
+		Graphic on = new Graphic(20,300,"resources/menu.jpg");
+		viewObjects.add(on);
 	}
 }
