@@ -100,7 +100,7 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 		FileOpenButton fileButton = new FileOpenButton(100, 70, 120, 30, null, MainScreen.this);
 		viewObjects.add(fileButton);
 		
-		public boolean read(File f){
+	/*	public boolean read(File f){
 			try{
 				FileReader fileReader = new FileReader(f);
 				String line = "";
@@ -121,7 +121,7 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 				System.out.println("The file name you specified does not exist.");
 				
 			}
-		}
+		}*/
 		//TextBox box1 = new TextBox(20, 210, 200, 100, "wow");
 		//viewObjects.add(box1);
 	}
