@@ -1,8 +1,7 @@
 package accounting;
 
 import java.awt.Color;
-
-
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -12,7 +11,7 @@ import java.util.List;
 
 import javax.swing.JFrame;
 
-
+import guiPlayer.Book;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.Checkbox;
@@ -93,17 +92,36 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 			}
 		}
 		});
-		public boolean read (File f) {
-			FileReader readsFile = new FileReader(f);
-		}
+		
+
 		viewObjects.add(save);
 		viewObjects.add(check);
 		viewObjects.add(delete);
 		FileOpenButton fileButton = new FileOpenButton(100, 70, 120, 30, null, MainScreen.this);
 		viewObjects.add(fileButton);
 		
-		
+		public boolean read(File f){
+			try{
+				FileReader fileReader = new FileReader(f);
+				String line = "";
+				//a BufferedReader enables us to read teh file one line at a time
+				BufferedReader br = new BufferedReader(fileReader);
+				while ((line = br.readLine()) != null) {
 
+					String[] param = line.split(",");
+					//add a new Book for each line in the save file
+					
+
+
+
+				}
+				br.close();
+				
+			}catch(Exception e){
+				System.out.println("The file name you specified does not exist.");
+				
+			}
+		}
 		//TextBox box1 = new TextBox(20, 210, 200, 100, "wow");
 		//viewObjects.add(box1);
 	}
