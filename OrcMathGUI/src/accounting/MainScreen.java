@@ -100,28 +100,7 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 		FileOpenButton fileButton = new FileOpenButton(100, 70, 120, 30, null, MainScreen.this);
 		viewObjects.add(fileButton);
 		
-	/*	public boolean read(File f){
-			try{
-				FileReader fileReader = new FileReader(f);
-				String line = "";
-				//a BufferedReader enables us to read teh file one line at a time
-				BufferedReader br = new BufferedReader(fileReader);
-				while ((line = br.readLine()) != null) {
-
-					String[] param = line.split(",");
-					//add a new Book for each line in the save file
-					
-
-
-
-				}
-				br.close();
-				
-			}catch(Exception e){
-				System.out.println("The file name you specified does not exist.");
-				
-			}
-		}*/
+		
 		//TextBox box1 = new TextBox(20, 210, 200, 100, "wow");
 		//viewObjects.add(box1);
 	}
@@ -137,6 +116,7 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	// SAVE FILE INTO A CSV FILE, THAT IS LATER CONVERTED INTO THE JAVA PROGRAM
+	// SAVE FILE INTO A CSV FILE, THAT IS LATER CONVERTED INTO THE JAVA PROGRAM: BOOK CATALOG TAKES INFO FROM FILE AND CALLS A METHOD TO RECREATE IT.
 	// USE REFERENCE FROM CATALOG MAKER, MAKE ADDITION FOR THE NUMBERS	
+	//HANDLES ARE NEEDED?
 }
