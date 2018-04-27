@@ -82,6 +82,7 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 				FileWriter Filewriter = new FileWriter("hello.csv");
 				for(int i = 0; i < boxes.size(); i++) {
 					Filewriter.write(i+"/n");
+					Filewriter.write(name, 0, i);//write a function where it returns the text from the text boxes depending on the box selected, so a handle is needed for my text. 
 				}
 				Filewriter.close();
 				System.out.println("Success! File \"hello.csv\" saved!");
@@ -107,14 +108,29 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 
 	@Override
 	public void setFile(File f) {
-		// TODO Auto-generated method stub
-		
+		BufferedReader br;
+		String everything = "";
+		try {
+			br = new BufferedReader(new FileReader(f));
+		    StringBuilder sb = new StringBuilder();
+		    String line = br.readLine();
+
+		    while (line != null) {
+		        sb.append(line);
+		        sb.append(System.lineSeparator());
+		        line = br.readLine();
+		    }
+		    everything = sb.toString();
+		    br.close();
+		}catch(IOException e) {
+		}
+			System.out.println(everything);
 	}
 
 	@Override
 	public JFrame getWindow() {
 		// TODO Auto-generated method stub
-		return null;
+		return StartScreen.a;
 	}
 	// SAVE FILE INTO A CSV FILE, THAT IS LATER CONVERTED INTO THE JAVA PROGRAM: BOOK CATALOG TAKES INFO FROM FILE AND CALLS A METHOD TO RECREATE IT.
 	// USE REFERENCE FROM CATALOG MAKER, MAKE ADDITION FOR THE NUMBERS	
