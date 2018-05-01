@@ -17,6 +17,7 @@ import guiTeacher.components.Button;
 import guiTeacher.components.Checkbox;
 import guiTeacher.components.FileOpenButton;
 import guiTeacher.components.TextBox;
+import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.FileRequester;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
@@ -25,6 +26,8 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 
 	private ArrayList<TextBox> boxes; //ap exam
 	private int a = 1;
+	private String name;
+	private ArrayList<String> textboxinfo;
 
 	
 	public MainScreen(int width, int height) {
@@ -51,7 +54,9 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 						addObject(box);
 						boxes.add(box);
 						a++;
-						
+						name = box.getText(); 
+						textboxinfo.add(name); // oninput should help track.
+						System.out.println(name); 
 					
 					
 				
@@ -81,8 +86,8 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 				try {
 				FileWriter Filewriter = new FileWriter("hello.csv");
 				for(int i = 0; i < boxes.size(); i++) {
-					Filewriter.write(i+"/n");
-					Filewriter.write(name, 0, i);//write a function where it returns the text from the text boxes depending on the box selected, so a handle is needed for my text. 
+					//Filewriter.write(i+"/n");
+					Filewriter.write(name,0,i);//write a function where it returns the text from the text boxes depending on the box selected, so a handle is needed for my text. 
 				}
 				Filewriter.close();
 				System.out.println("Success! File \"hello.csv\" saved!");
