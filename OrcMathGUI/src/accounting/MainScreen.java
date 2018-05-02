@@ -11,7 +11,7 @@ import java.util.List;
 
 import javax.swing.JFrame;
 
-import guiPlayer.Book;
+
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.Checkbox;
@@ -41,7 +41,7 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 		boxes = new ArrayList<TextBox>(); 
 		Button check = new Button(250, 95, 200, 100, "Open", new Action() {
 			
-			boolean visible = true;
+			//boolean visible = true;
 			
 			
 			public void act() {
@@ -54,10 +54,11 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 						addObject(box);
 						boxes.add(box);
 						a++;
-						name = box.getText(); 
-						textboxinfo.add(name); // oninput should help track.
-						System.out.println(name); 
-					
+						name = box.getText();
+						ArrayList<String> textboxinfo = new ArrayList<>();
+						textboxinfo.add(name); // oninput should help track. this only changes name, so it only prints out one.
+						System.out.println(textboxinfo); 
+						
 					
 				
 			}
@@ -71,6 +72,7 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 				TextBox lastBox = boxes.get(boxes.size()-1); // handles have to be lowercase
 				remove(lastBox);//removes from screen
 				boxes.remove(lastBox);//remove from reference
+				
 				a--;
 				}
 				else {
@@ -140,4 +142,7 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 	// SAVE FILE INTO A CSV FILE, THAT IS LATER CONVERTED INTO THE JAVA PROGRAM: BOOK CATALOG TAKES INFO FROM FILE AND CALLS A METHOD TO RECREATE IT.
 	// USE REFERENCE FROM CATALOG MAKER, MAKE ADDITION FOR THE NUMBERS	
 	//HANDLES ARE NEEDED? JAVAFX.
+	public void act() {
+		
+	}
 }
