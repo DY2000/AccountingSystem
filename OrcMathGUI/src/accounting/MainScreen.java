@@ -54,9 +54,9 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 						addObject(box);
 						boxes.add(box);
 						a++;
-						name = box.getText();
+						//name = box.getText();
 						ArrayList<String> textboxinfo = new ArrayList<>();
-						textboxinfo.add(name); // oninput should help track. this only changes name, so it only prints out one.
+						textboxinfo.add(box.getText()); // oninput should help track. this only changes name, so it only prints out one.
 						System.out.println(textboxinfo); 
 						
 					
