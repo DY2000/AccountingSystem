@@ -143,6 +143,12 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 	// USE REFERENCE FROM CATALOG MAKER, MAKE ADDITION FOR THE NUMBERS	
 	//HANDLES ARE NEEDED? JAVAFX.
 	public void act() {
-		
+		 //onload = function () {
+		      // var e = document.getElementById('myInput');
+		       //e.oninput = myHandler;
+		       //e.onpropertychange = e.oninput; // for IE8
+		       // e.onchange = e.oninput; // FF needs this in <select><option>...
+		       // other things for onload()
+		 //   };
 	}
 }
