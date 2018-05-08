@@ -39,6 +39,7 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 	public void initAllObjects(List<Visible> viewObjects) {
 
 		boxes = new ArrayList<TextBox>(); 
+		textboxinfo = new ArrayList<String>();
 		Button check = new Button(250, 95, 200, 100, "Open", new Action() {
 			
 			//boolean visible = true;
@@ -50,13 +51,12 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 
 						int i = a;
 						a = i;
-						TextBox box = new TextBox(20 + 100 * i, 160, 200, 100, "blank.");
+						TextBox box = new TextBox(200 * i, 160, 200, 100, "blank");
 						addObject(box);
 						boxes.add(box);
 						a++;
 						//name = box.getText();
-						ArrayList<String> textboxinfo = new ArrayList<>();
-						textboxinfo.add(box.getText()); // oninput should help track. this only changes name, so it only prints out one.
+						textboxinfo.add(box.getText()); 
 						System.out.println(textboxinfo); 
 						
 					
@@ -72,8 +72,9 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 				TextBox lastBox = boxes.get(boxes.size()-1); // handles have to be lowercase
 				remove(lastBox);//removes from screen
 				boxes.remove(lastBox);//remove from reference
-				
+				textboxinfo.remove(lastBox.getText()); //remove string from arrayList<String>
 				a--;
+				System.out.println(textboxinfo);
 				}
 				else {
 					
@@ -88,8 +89,8 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 				try {
 				FileWriter Filewriter = new FileWriter("hello.csv");
 				for(int i = 0; i < boxes.size(); i++) {
-					//Filewriter.write(i+"/n");
-					Filewriter.write(name,0,i);//write a function where it returns the text from the text boxes depending on the box selected, so a handle is needed for my text. 
+					Filewriter.write(i+"/n");
+					//Filewriter.write(textboxinfo.toString());//write a function where it returns the text from the text boxes depending on the box selected, so a handle is needed for my text. 
 				}
 				Filewriter.close();
 				System.out.println("Success! File \"hello.csv\" saved!");
