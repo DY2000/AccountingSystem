@@ -90,7 +90,7 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 				FileWriter Filewriter = new FileWriter("hello.csv");
 				for(int i = 0; i < boxes.size(); i++) {
 					Filewriter.write(i+"/n");
-					//Filewriter.write(textboxinfo.toString());//write a function where it returns the text from the text boxes depending on the box selected, so a handle is needed for my text. 
+					Filewriter.write(textboxinfo.toString(),0,i);//write a function where it returns the text from the text boxes depending on the box selected, so a handle is needed for my text. 
 				}
 				Filewriter.close();
 				System.out.println("Success! File \"hello.csv\" saved!");
