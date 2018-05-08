@@ -149,7 +149,7 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 		       //e.oninput = myHandler;
 		       //e.onpropertychange = e.oninput; // for IE8
 		       // e.onchange = e.oninput; // FF needs this in <select><option>...
-		       // other things for onload()
+		       // other things for onload().
 		 //   };
 	}
 }
