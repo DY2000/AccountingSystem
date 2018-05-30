@@ -96,6 +96,7 @@ public class MainScreen extends FullFunctionScreen implements FileRequester {
 					Filewriter.write(i+"/n");
 					//Filewriter.write(textboxinfo.toString());//write a function where it returns the text from the text boxes depending on the box selected, so a handle is needed for my text. 
 				}
+				Filewriter.write("/" + textboxinfo.toString());
 				Filewriter.close();
 				System.out.println("Success! File \"hello.csv\" saved!");
 			}
